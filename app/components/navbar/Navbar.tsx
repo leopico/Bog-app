@@ -10,14 +10,19 @@ import Sidebar from './Sidebar';
 import useUsersRoutes from '@/app/hooks/useUsersRoutes';
 import useAdminRoutes from '@/app/hooks/useAdminRoutes';
 import { AiOutlineClose } from "react-icons/ai";
+import { useRouter } from 'next/navigation';
+import { User } from '@prisma/client';
 
-const Navbar = () => {
+interface NavBarProps {
+    currentUser: User | null
+}
+
+const Navbar: React.FC<NavBarProps> = ({ currentUser }) => {
     const [nav, setNav] = useState(false);
-    const [user, setUser] = useState(true)
+    const [user, setUser] = useState(true);
     const usersroute = useUsersRoutes();
-    const adminroute = useAdminRoutes()
-
-
+    const adminroute = useAdminRoutes();
+    const router = useRouter();
 
     return (
         <div className='fixed w-full z-10 bg-white shadow-sm dark:bg-slate-800 dark:shadow-md'>
@@ -27,7 +32,7 @@ const Navbar = () => {
                         <Logo />
                     </div>
                     <div className='hidden sm:flex sm:mr-1 items-center bg-gray-200 rounded-full p-1 text-[14px]'>
-                        <div className='bg-black text-white rounded-full p-2'>
+                        <div onClick={() => router.push('/')} className='bg-black text-white rounded-full p-2 cursor-pointer'>
                             <GlobalImage
                                 priority={true}
                                 className='rounded-full'
@@ -45,7 +50,7 @@ const Navbar = () => {
                     <div className='cursor-pointer'>
                         <ThemeButton />
                     </div>
-                    <UserMenu />
+                    <UserMenu user={currentUser} />
                     {
                         nav ? (
                             <div className='bg-black/60 fixed w-full h-screen z-10 top-0 left-0'></div>

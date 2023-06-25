@@ -18,13 +18,15 @@ import useLoginModal from "@/app/hooks/useLoginModal";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 
 import { useRouter } from "next/navigation";
+import { signIn } from 'next-auth/react';
 
 
 const LoginModal = () => {
+    const [isLoading, setIsLoading] = useState(false);
+
     const loginModal = useLoginModal();
     const registerModal = useRegisterModal();
     const router = useRouter();
-    const [isLoading, setIsLoading] = useState(false);
 
     const { //for form activity
         register,
@@ -43,7 +45,23 @@ const LoginModal = () => {
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         setIsLoading(true)
 
-        //Sigin method of next-auth
+        signIn("credentials", {
+            ...data,
+            redirect: false
+        })
+            .then((callback) => {
+                setIsLoading(false);
+                if (callback?.ok) {
+                    toast.success('Logged in');
+                    router.refresh();
+                    loginModal.onClose();
+                };
+
+                if (callback?.error) {
+                    toast.error(callback?.error);
+                };
+            })
+
     }
 
     const toggle = useCallback(() => {
@@ -62,8 +80,8 @@ const LoginModal = () => {
     const footerContent = (
         <div className="flex flex-col gap-4 mt-3">
             <hr />
-            <Button bg={true} outline label="Continue with Google" icon={FcGoogle} onClick={() => { }} />
-            <Button bg={true} outline label="Continue with Github" icon={AiFillGithub} onClick={() => { }} />
+            <Button bg={true} outline label="Continue with Google" icon={FcGoogle} onClick={() => signIn('google')} />
+            <Button bg={true} outline label="Continue with Github" icon={AiFillGithub} onClick={() => signIn('github')} />
             <div className=" text-neutral-500 text-center mt-4 font-light">
                 <div className="flex flex-row justify-center gap-2 items-center dark:text-white">
                     <div>First time using AirBnb?</div>

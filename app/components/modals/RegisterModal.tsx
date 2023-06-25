@@ -16,6 +16,7 @@ import Button from "../Button";
 
 import { toast } from "react-hot-toast";
 import axios from "axios";
+import { signIn } from "next-auth/react";
 
 
 const RegisterModal = () => {
@@ -39,17 +40,19 @@ const RegisterModal = () => {
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         setIsLoading(true)
-        console.log(data);
 
-        axios.post('/api/register', data).then(() => {
-            toast.success('Success!');
-            registerModal.onClose();
-            loginModal.onOpen();
-        }).catch((error) => {
-            toast.error("Something went wrong!")
-        }).finally(() => {
-            setIsLoading(false)
-        })
+        axios.post('/api/register', data)
+            .then(() => {
+                toast.success('Success!');
+                registerModal.onClose();
+                loginModal.onOpen();
+            })
+            .catch(() => {
+                toast.error("Something went wrong!")
+            })
+            .finally(() => {
+                setIsLoading(false)
+            })
     };
 
     const toggle = useCallback(() => {
@@ -69,8 +72,8 @@ const RegisterModal = () => {
     const footerContent = (
         <div className="flex flex-col gap-4 mt-3">
             <hr />
-            <Button bg={true} outline label="Continue with Google" icon={FcGoogle} onClick={() => { }} />
-            <Button bg={true} outline label="Continue with Github" icon={AiFillGithub} onClick={() => { }} />
+            <Button bg={true} outline label="Continue with Google" icon={FcGoogle} onClick={() => signIn('google')} />
+            <Button bg={true} outline label="Continue with Github" icon={AiFillGithub} onClick={() => signIn('github')} />
             <div className=" text-neutral-500 text-center mt-4 font-light">
                 <div className="flex flex-row justify-center gap-2 items-center dark:text-white">
                     <div>Already have an account?</div>
