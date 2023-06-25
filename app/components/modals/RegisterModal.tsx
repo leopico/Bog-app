@@ -59,7 +59,7 @@ const RegisterModal = () => {
 
     const bodyContent = (
         <div className="flex flex-col gap-4">
-            <Heading title="Welcome to Airbnb" subtitle="Create an account!" />
+            <Heading title="Welcome to LPC Blog" subtitle="Create an account!" />
             <Input bg={true} id="email" label="Email" disabled={isLoading} register={register} errors={errors} required />
             <Input bg={true} id="name" label="Name" disabled={isLoading} register={register} errors={errors} required />
             <Input bg={true} id="password" label="Password" type="password" disabled={isLoading} register={register} errors={errors} required />
