@@ -29,6 +29,7 @@ const Navbar = () => {
                     <div className='hidden sm:flex sm:mr-1 items-center bg-gray-200 rounded-full p-1 text-[14px]'>
                         <div className='bg-black text-white rounded-full p-2'>
                             <GlobalImage
+                                priority={true}
                                 className='rounded-full'
                                 alt='logo'
                                 width={40}

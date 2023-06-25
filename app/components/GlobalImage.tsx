@@ -11,12 +11,16 @@ interface GlobalImageProps {
     width?: number
     height?: number
     fullfill?: boolean
+    priority?: boolean
 }
 
-const GlobalImage: React.FC<GlobalImageProps> = ({ src, className, alt, fullfill, width, height }) => {
+const GlobalImage: React.FC<GlobalImageProps> = ({
+    src, className, alt, fullfill, width, height, priority
+}) => {
     const [isLoading, setIsLoading] = useState(true);
     return (
         <Image
+            priority={priority}
             src={src}
             fill={fullfill}
             alt={alt}

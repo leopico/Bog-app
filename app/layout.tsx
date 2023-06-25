@@ -2,6 +2,8 @@ import './globals.css'
 import Navbar from './components/navbar/Navbar'
 import DarkMode from './providers/Darkmode'
 import ToasterProvider from './providers/ToasterProvider'
+import RegisterModal from './components/modals/RegisterModal'
+import LoginModal from './components/modals/LoginModal'
 
 
 export const metadata = {
@@ -19,6 +21,8 @@ export default function RootLayout({
       <body>
         <DarkMode>
           <ToasterProvider />
+          <LoginModal />
+          <RegisterModal />
           <Navbar />
           <div className='pb-10 pt-28 dark:bg-slate-800'>
             {children}
