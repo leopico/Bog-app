@@ -18,8 +18,9 @@ interface NavBarProps {
 }
 
 const Navbar: React.FC<NavBarProps> = ({ currentUser }) => {
+    const role = currentUser?.role;
+
     const [nav, setNav] = useState(false);
-    const [user, setUser] = useState(false);
     const usersroute = useUsersRoutes();
     const adminroute = useAdminRoutes();
     const router = useRouter();
@@ -63,7 +64,7 @@ const Navbar: React.FC<NavBarProps> = ({ currentUser }) => {
                         <nav>
 
                             {
-                                user ? (
+                                role === 'user' ? (
                                     <ul role='list'
                                         className='flex flex-col p-4 text-gray-800 dark:text-white/90 '>
                                         {

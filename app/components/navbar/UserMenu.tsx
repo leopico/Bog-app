@@ -8,6 +8,7 @@ import useLoginModal from "@/app/hooks/useLoginModal";
 import useRegisterModal from '@/app/hooks/useRegisterModal';
 import { User } from "@prisma/client";
 import { signOut } from "next-auth/react";
+import { toast } from "react-hot-toast";
 
 interface UserMenuProps {
     user: User | null
@@ -40,7 +41,10 @@ const UserMenu: React.FC<UserMenuProps> = ({ user }) => {
                         <div className='flex flex-col cursor-pointer'>
                             {
                                 user ? (
-                                    <MenuItem onClick={() => signOut()} label='Logout' />
+                                    <>
+                                        <MenuItem onClick={() => toast.success('Your name')} label={user.name} />
+                                        <MenuItem onClick={() => signOut()} label='Logout' />
+                                    </>
                                 ) : (
                                     <>
                                         <MenuItem onClick={loginModal.onOpen} label='Login' />

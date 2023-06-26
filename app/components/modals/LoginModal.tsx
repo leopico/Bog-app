@@ -84,7 +84,7 @@ const LoginModal = () => {
             <Button bg={true} outline label="Continue with Github" icon={AiFillGithub} onClick={() => signIn('github')} />
             <div className=" text-neutral-500 text-center mt-4 font-light">
                 <div className="flex flex-row justify-center gap-2 items-center dark:text-white">
-                    <div>First time using AirBnb?</div>
+                    <div>First time using LPC Blog?</div>
                     <div onClick={toggle} className="text-neutral-800 cursor-pointer
                      hover:underline font-semibold dark:text-white">
                         Create an account
