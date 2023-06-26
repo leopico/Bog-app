@@ -5,6 +5,7 @@ import ToasterProvider from './providers/ToasterProvider'
 import RegisterModal from './components/modals/RegisterModal'
 import LoginModal from './components/modals/LoginModal'
 import getCurrentUser from './actions/getCurrentUser'
+import Footer from './components/footer/Footer'
 
 
 export const metadata = {
@@ -18,6 +19,7 @@ export default async function RootLayout({
   children: React.ReactNode
 }) {
   const currentUser = await getCurrentUser();
+  const role = currentUser?.role
 
   return (
     <html lang="en" className='light' style={{ colorScheme: 'light' }}>
@@ -30,6 +32,13 @@ export default async function RootLayout({
           <div className='pb-10 pt-28 dark:bg-slate-800'>
             {children}
           </div>
+          {
+            role === 'admin' ? (
+              ""
+            ) : (
+              <Footer />
+            )
+          }
         </DarkMode>
       </body>
     </html>
