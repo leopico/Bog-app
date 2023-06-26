@@ -61,44 +61,52 @@ const Navbar: React.FC<NavBarProps> = ({ currentUser }) => {
                         : 'fixed top-0 left-[-100%] w-[300px] h-screen bg-white z-10 duration-500 dark:bg-black/50 dark:text-white'}>
                         <AiOutlineClose onClick={() => setNav(!nav)} size={30} className='absolute right-4 top-4 cursor-pointer' />
                         <h2 className='text-2xl p-4'>Blog <span className='font-bold'>Menu</span></h2>
-                        <nav>
-
-                            {
-                                role === 'user' ? (
-                                    <ul role='list'
-                                        className='flex flex-col p-4 text-gray-800 dark:text-white/90 '>
-                                        {
-                                            usersroute.map((item) => (
-                                                <Sidebar
-                                                    key={item.label}
-                                                    href={item.href}
-                                                    label={item.label}
-                                                    icon={item.icon}
-                                                    active={item.active}
-                                                    onClick={() => setNav(!nav)}
-                                                />
-                                            ))
-                                        }
-                                    </ul>
-                                ) : (
-                                    <ul role='list'
-                                        className='flex flex-col p-4 text-gray-800 dark:text-white/90 '>
-                                        {
-                                            adminroute.map((item) => (
-                                                <Sidebar
-                                                    key={item.label}
-                                                    href={item.href}
-                                                    label={item.label}
-                                                    icon={item.icon}
-                                                    active={item.active}
-                                                    onClick={() => setNav(!nav)}
-                                                />
-                                            ))
-                                        }
-                                    </ul>
-                                )
-                            }
-                        </nav>
+                        {
+                            currentUser ? (
+                                <nav>
+                                    {
+                                        role === 'user' ? (
+                                            <ul role='list'
+                                                className='flex flex-col p-4 text-gray-800 dark:text-white/90 '>
+                                                {
+                                                    usersroute.map((item) => (
+                                                        <Sidebar
+                                                            key={item.label}
+                                                            href={item.href}
+                                                            label={item.label}
+                                                            icon={item.icon}
+                                                            active={item.active}
+                                                            onClick={() => setNav(!nav)}
+                                                        />
+                                                    ))
+                                                }
+                                            </ul>
+                                        ) : (
+                                            <ul role='list'
+                                                className='flex flex-col p-4 text-gray-800 dark:text-white/90 '>
+                                                {
+                                                    adminroute.map((item) => (
+                                                        <Sidebar
+                                                            key={item.label}
+                                                            href={item.href}
+                                                            label={item.label}
+                                                            icon={item.icon}
+                                                            active={item.active}
+                                                            onClick={() => setNav(!nav)}
+                                                        />
+                                                    ))
+                                                }
+                                            </ul>
+                                        )
+                                    }
+                                </nav>
+                            ) : (
+                                <ul role='list'
+                                    className='flex flex-col p-4 text-gray-800 dark:text-white/90 '>
+                                    Welcome from My Blog app
+                                </ul>
+                            )
+                        }
                     </div>
                 </div>
             </div>

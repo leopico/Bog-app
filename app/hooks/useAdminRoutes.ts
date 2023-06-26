@@ -9,7 +9,7 @@ const useAdminRoutes = () => {
 
     const routes = useMemo(() => [
         {
-            label: 'Home',
+            label: 'Users Home',
             href: '/',
             icon: AiOutlineHome,
             active: pathname === '/',
