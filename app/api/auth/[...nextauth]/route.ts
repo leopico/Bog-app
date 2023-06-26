@@ -52,11 +52,35 @@ export const authOptions: AuthOptions = {
             }
         })
     ],
-    debug: process.env.NODE_ENV === 'development',
+    pages: {
+        signIn: "/"
+    },
     session: {
         strategy: 'jwt'
     },
+    callbacks: { //taking data from user role property in user data to token data
+        async jwt({token, user}) {
+            if (user) {
+                const userWithRole = await db.user.findUnique({
+                    where: {
+                        id: user.id,
+                    },
+                    select: {
+                        role: true,
+                    }
+                });
+                if (userWithRole && userWithRole.role) {
+                    token = {
+                        ...token,
+                        role: userWithRole.role
+                    };
+                }
+            };
+            return token;
+        }
+    },
     secret: process.env.NEXTAUTH_SECRET,
+    debug: process.env.NODE_ENV === 'development',
 };
 
 const handler = NextAuth(authOptions);  

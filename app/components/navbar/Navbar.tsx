@@ -19,7 +19,7 @@ interface NavBarProps {
 
 const Navbar: React.FC<NavBarProps> = ({ currentUser }) => {
     const [nav, setNav] = useState(false);
-    const [user, setUser] = useState(true);
+    const [user, setUser] = useState(false);
     const usersroute = useUsersRoutes();
     const adminroute = useAdminRoutes();
     const router = useRouter();
