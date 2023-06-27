@@ -2,25 +2,34 @@
 
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import { useState } from 'react';
+interface TextEditorProps {
+    id: string
+    setValue: any;
+    disabled?: boolean
+    value?: any
+}
 
-
-const TextEditor = () => {
-    const [description, setDescription] = useState('');
+const TextEditor: React.FC<TextEditorProps> = ({
+    id,
+    setValue,
+    disabled,
+    value
+}) => {
 
     const handleQuillChange = (content: string) => {
-        // Handle the content change
-        setDescription(content);
+        setValue(id, content); // Set the value using setValue from react-hook-form
     };
 
     return (
-        <div className='bg-white dark:bg-gray-600'>
+        <div className='bg-white text-black dark:bg-gray-600 w-full relative'>
             <ReactQuill
                 theme="snow"
                 onChange={handleQuillChange}
+                readOnly={disabled}
+                value={value}
             />
         </div>
-    )
-}
+    );
+};
 
-export default TextEditor
+export default TextEditor;

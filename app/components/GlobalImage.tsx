@@ -5,7 +5,7 @@ import Image from "next/image"
 import { useState } from "react"
 
 interface GlobalImageProps {
-    src: string
+    src: any
     className: string
     alt: string
     width?: number

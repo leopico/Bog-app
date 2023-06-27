@@ -4,23 +4,24 @@ import { IconType } from "react-icons/lib"
 
 interface ButtonProps {
     label: string
-    onClick: (e: React.MouseEvent<HTMLButtonElement>) => void
+    onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
     disabled?: boolean
     outline?: boolean
     small?: boolean
     icon?: IconType
     bg?: boolean
+    type?: "button" | "submit" | 'reset' | undefined
 }
 
 // Note => outline, small and icon are doing for interaction of className
 //disabel is loading state
 
 const Button: React.FC<ButtonProps> = ({
-    label, onClick, disabled, outline, small, icon: Icon, bg
+    label, onClick, disabled, outline, small, icon: Icon, bg, type
 }) => {
 
     return (
-        <button onClick={onClick} disabled={disabled}
+        <button onClick={onClick} disabled={disabled} type={type}
             className={`relative disabled:opacity-70 disabled:cursor-not-allowed rounded-lg hover:opacity-80 transition w-full
             ${outline ? 'bg-white' : 'bg-black/40'}
             ${outline ? 'border-black' : 'bg-black/40'}

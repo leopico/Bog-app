@@ -28,8 +28,4 @@ body,
     .Font {
         font-family: 'Rubik', sans-serif;
     }
-
-    .card:hover .card-button {
-        display: block;
-    }
 }

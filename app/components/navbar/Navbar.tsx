@@ -67,7 +67,7 @@ const Navbar: React.FC<NavBarProps> = ({ currentUser }) => {
                                     {
                                         role === 'user' ? (
                                             <ul role='list'
-                                                className='flex flex-col p-4 text-gray-800 dark:text-white/90 '>
+                                                className='flex flex-col p-4 text-gray-800 dark:text-white/90'>
                                                 {
                                                     usersroute.map((item) => (
                                                         <Sidebar
