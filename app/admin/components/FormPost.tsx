@@ -21,7 +21,6 @@ const FormPost = () => {
         register,
         handleSubmit,
         setValue,
-        getValues,
         watch,
         formState: {
             errors,

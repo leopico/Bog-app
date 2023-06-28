@@ -1,6 +1,6 @@
 import { usePathname } from "next/navigation"
 import { useMemo } from "react";
-import { AiOutlineDashboard,AiOutlineHome } from "react-icons/ai";
+import { AiOutlineDashboard,AiOutlineHome,AiOutlineSave } from "react-icons/ai";
 import { MdEditNote } from "react-icons/md";
 import { FiUsers } from "react-icons/fi"
 
@@ -31,6 +31,12 @@ const useAdminRoutes = () => {
             href: '/admin/users',
             icon: FiUsers,
             active: pathname === '/admin/users'
+        },
+        {
+            label: 'Watch Later',
+            href: '/watch-later',
+            icon: AiOutlineSave,
+            active: pathname === '/watch-later'
         }
     ]
         , [pathname]);

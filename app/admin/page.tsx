@@ -1,4 +1,3 @@
-import GlobalImage from "@/app/components/GlobalImage"
 import getPosts from "../actions/getPosts"
 import ClientPosts from "../components/ClientPosts";
 import getCurrentUser from "../actions/getCurrentUser";

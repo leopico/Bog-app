@@ -8,7 +8,8 @@ async function main() {
             name: "admin",
             email: 'paypalmoney967@gmail.com',
             hashedPassword: password,
-            role: 'admin'
+            role: 'admin',
+            watchlaterIds: []
         }
     });
 }
