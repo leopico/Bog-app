@@ -12,6 +12,7 @@ import useAdminRoutes from '@/app/hooks/useAdminRoutes';
 import { AiOutlineClose } from "react-icons/ai";
 import { useRouter } from 'next/navigation';
 import { User } from '@prisma/client';
+import useSearchModal from '@/app/hooks/useSearchModal';
 
 interface NavBarProps {
     currentUser: User | null
@@ -19,11 +20,12 @@ interface NavBarProps {
 
 const Navbar: React.FC<NavBarProps> = ({ currentUser }) => {
     const role = currentUser?.role;
+    const router = useRouter();
 
     const [nav, setNav] = useState(false);
     const usersroute = useUsersRoutes();
     const adminroute = useAdminRoutes();
-    const router = useRouter();
+    const searchModal = useSearchModal();
 
     return (
         <div className='fixed w-full z-10 bg-white shadow-sm dark:bg-slate-800 dark:shadow-md'>
@@ -45,7 +47,7 @@ const Navbar: React.FC<NavBarProps> = ({ currentUser }) => {
                         </div>
                         <p className='p-2 dark:text-black/50'>Blog</p>
                     </div>
-                    <div className='bg-gray-300 rounded-full flex items-center px-2 w-[200px] sm:w-[400px] lg:w-[500px] hover:bg-gray-200'>
+                    <div onClick={searchModal.onOpen} className='bg-gray-300 rounded-full flex items-center px-2 w-[200px] sm:w-[400px] lg:w-[500px] hover:bg-gray-200'>
                         <Search />
                     </div>
                     <div className='cursor-pointer'>

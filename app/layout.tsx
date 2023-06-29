@@ -6,6 +6,8 @@ import RegisterModal from './components/modals/RegisterModal'
 import LoginModal from './components/modals/LoginModal'
 import getCurrentUser from './actions/getCurrentUser'
 import Footer from './components/footer/Footer'
+import SearchModal from './components/modals/SearchModal'
+import getPosts from './actions/getPosts'
 
 
 export const metadata = {
@@ -18,6 +20,8 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const posts = await getPosts();
+  const postsTitle = posts.map((post) => ({ title: post.title, id: post.id }))
   const currentUser = await getCurrentUser();
   const role = currentUser?.role
 
@@ -28,6 +32,7 @@ export default async function RootLayout({
           <ToasterProvider />
           <LoginModal />
           <RegisterModal />
+          <SearchModal postsTitle={postsTitle} />
           <Navbar currentUser={currentUser} />
           <div className='pb-10 pt-28 dark:bg-slate-800'>
             {children}

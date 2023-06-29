@@ -13,12 +13,13 @@ interface ModalProps {
     footer?: React.ReactElement;
     actionLabel: string;
     disabled?: boolean;
+    search?: React.ReactElement;
 }
 
 
 const Modal: React.FC<ModalProps> = ({
     isOpen, onClose, onSubmit, title, body,
-    footer, actionLabel, disabled
+    footer, actionLabel, disabled, search
 }) => {
     const [showModal, setShowModal] = useState(isOpen);
     //this is for open modal of register and login
@@ -88,6 +89,10 @@ const Modal: React.FC<ModalProps> = ({
                                     />
                                 </div>
                                 {footer}
+                            </div>
+                            {/* Search */}
+                            <div className='flex flex-col cursor-pointer p-2 mt-1 text-sm sm:text-lg'>
+                                {search}
                             </div>
                         </div>
                     </div>

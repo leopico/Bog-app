@@ -22,9 +22,7 @@ const PostPage = async ({ params }: { params: IParams }) => {
 
     return (
         <div className="container mx-auto max-w-[800px] p-7 lg:p-8 4xl:max-w-[1700px]">
-            <ClientPost
-                post={post}
-            />
+            <ClientPost post={post} />
         </div>
     )
 }
