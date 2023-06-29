@@ -10,6 +10,7 @@ import { toast } from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 import WatchLaterButton from './WatchLaterButton';
 import SmallLoader from './SmallLoader';
+import Link from 'next/link';
 
 interface ClientPostsProps {
     posts: Post[]
@@ -41,6 +42,7 @@ const ClientPosts: React.FC<ClientPostsProps> = ({ posts, currentUser }) => {
     const handleSetIsLoading = (value: boolean) => {
         setIsLoading(value)
     }
+
 
     useEffect(() => {
         setMounted(true)
@@ -99,14 +101,9 @@ const ClientPosts: React.FC<ClientPostsProps> = ({ posts, currentUser }) => {
                                         role === 'admin' && (
                                             <>
                                                 <button onClick={(e) => handleDelete(e, post.id)} disabled={deletingId === post.id && true}
-                                                    className="card-button mt-2 w-full bg-red-500 hover:bg-red-600 text-white font-bold  rounded"
+                                                    className="text-center mt-2 w-full bg-red-500 hover:bg-red-600 text-white font-bold  rounded"
                                                 >
                                                     delete
-                                                </button>
-                                                <button
-                                                    className="card-button mt-2 w-full bg-blue-500 hover:bg-blue-600 text-white font-bold rounded"
-                                                >
-                                                    update
                                                 </button>
                                             </>
                                         )

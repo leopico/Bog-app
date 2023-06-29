@@ -34,7 +34,7 @@ const UseWatchLater = ({ postId, currentUser }: IUseWatchLater) => {
                 request = () => axios.delete(`/api/watchlater/${postId}`)
             } else {
                 request = () => axios.post(`/api/watchlater/${postId}`)
-            }
+            }   
 
             await request();
             router.refresh();

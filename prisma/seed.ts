@@ -6,7 +6,7 @@ async function main() {
     const user = await db.user.create({
         data: {
             name: "admin",
-            email: 'paypalmoney967@gmail.com',
+            email: 'paypalmoney967@gmail.com', //if you change then have to update in getAllUsers.ts
             hashedPassword: password,
             role: 'admin',
             watchlaterIds: []

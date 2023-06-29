@@ -44,6 +44,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ user }) => {
                                     <>
                                         <MenuItem onClick={() => toast.success('Your name')} label={user.name} />
                                         <MenuItem onClick={() => toast.success('Your email')} label={user.email} />
+                                        <MenuItem onClick={() => toast.success('Your role')} label={user.role} />
                                         <MenuItem onClick={() => signOut()} label='Logout' />
                                     </>
                                 ) : (
