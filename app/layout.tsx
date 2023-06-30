@@ -41,7 +41,7 @@ export default async function RootLayout({
             role === 'admin' ? (
               ""
             ) : (
-              <Footer />
+              <Footer currentUser={currentUser} />
             )
           }
         </DarkMode>

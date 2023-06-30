@@ -1,4 +1,5 @@
 import getCurrentUser from "@/app/actions/getCurrentUser";
+import { sendNotificationEmail } from "@/app/hooks/useNodeMailer";
 import db from "@/app/libs/prismadb";
 import { NextResponse } from "next/server";
 
@@ -27,6 +28,18 @@ export async function POST(request: Request) {
         }
       }
     });
+
+    const recipientEmail: string[] = await db.subscriber.findMany({
+      where: {
+        isSubscribed: true
+      },
+      select: {
+        email: true
+      }
+    }).then(subscribers => subscribers.map(subscriber => subscriber.email));
+
+    // Send notification email
+    await sendNotificationEmail(newPost.title, recipientEmail);
 
     return NextResponse.json(newPost)
   } catch (error) {
