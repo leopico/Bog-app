@@ -34,9 +34,14 @@ export const authOptions: AuthOptions = {
                         email: credentials.email
                     }
                 })
+               
 
                 if (!user || !user.hashedPassword) {
                     throw new Error('Invalid Credentials');
+                }
+
+                 if (!user.active) {
+                    throw new Error('User is not activate')
                 }
 
                 const isCorrectPassword = await bcrypt.compare(
@@ -59,7 +64,7 @@ export const authOptions: AuthOptions = {
         strategy: 'jwt'
     },
     callbacks: { //taking data from user role property in user data to token data
-        async jwt({token, user}) {
+        async jwt({ token, user }) {
             if (user) {
                 const userWithRole = await db.user.findUnique({
                     where: {
@@ -83,6 +88,6 @@ export const authOptions: AuthOptions = {
     debug: process.env.NODE_ENV === 'development',
 };
 
-const handler = NextAuth(authOptions);  
+const handler = NextAuth(authOptions);
 
 export { handler as GET, handler as POST };

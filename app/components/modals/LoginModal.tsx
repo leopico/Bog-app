@@ -51,17 +51,20 @@ const LoginModal = () => {
         })
             .then((callback) => {
                 setIsLoading(false);
-                if (callback?.ok) {
+                if (callback?.error) {
+                    toast.error(callback?.error);
+                } else {
                     toast.success('Logged in');
                     router.refresh();
                     loginModal.onClose();
-                };
-
-                if (callback?.error) {
-                    toast.error(callback?.error);
-                };
+                }
             })
-
+            .catch(() => {
+                toast.error('Something went wrong');
+            })
+            .finally(() => {
+                setIsLoading(false);
+            })
     }
 
     const toggle = useCallback(() => {

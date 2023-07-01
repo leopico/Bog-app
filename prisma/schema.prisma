@@ -19,12 +19,14 @@ model User {
   hashedPassword String?
   role           String    @default("user")
   watchlaterIds  String[]  @db.ObjectId
+  active         Boolean   @default(false)
   createdAt      DateTime  @default(now())
   updatedAt      DateTime  @updatedAt
 
-  accounts   Account[]
-  posts      Post[]
-  subscriber Subscriber?
+  accounts       Account[]
+  posts          Post[]
+  subscriber     Subscriber?
+  activatetokens ActiveToken[]
 }
 
 model Account {
@@ -42,7 +44,7 @@ model Account {
   session_state     String?
   role              String  @default("user")
 
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade) //connect between references's id and User Model's id
 
   @@unique([provider, providerAccountId])
 }
@@ -56,7 +58,7 @@ model Post {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  poster User @relation(fields: [posterId], references: [id], onDelete: Cascade)
+  poster User @relation(fields: [posterId], references: [id], onDelete: Cascade) //connect with between references's id and User Model's id
 }
 
 model Subscriber {
@@ -64,5 +66,16 @@ model Subscriber {
   email        String  @unique
   isSubscribed Boolean
 
-  userEmail User @relation(fields: [email], references: [email])
+  userEmail User @relation(fields: [email], references: [email]) //connect with between references's email and User Model's email
+}
+
+model ActiveToken {
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  token       String    @unique
+  activatedAt DateTime? @updatedAt
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  userId String @db.ObjectId
+  user   User   @relation(fields: [userId], references: [id]) //connect with between references's id and User Model's id
 }

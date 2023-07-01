@@ -1,5 +1,5 @@
 import getCurrentUser from "@/app/actions/getCurrentUser";
-import { sendNotificationEmail } from "@/app/hooks/useNodeMailer";
+import { sendNotificationEmail } from "@/app/hooks/usePostNodeMailer";
 import db from "@/app/libs/prismadb";
 import { NextResponse } from "next/server";
 

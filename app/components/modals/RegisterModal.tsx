@@ -43,12 +43,14 @@ const RegisterModal = () => {
 
         axios.post('/api/register', data)
             .then(() => {
-                toast.success('Success!');
+                setTimeout(() => {
+                    toast.success('Success!,Send notification in your mail! Verify Your Identity');
+                }, 6000);
                 registerModal.onClose();
                 loginModal.onOpen();
             })
-            .catch(() => {
-                toast.error("Something went wrong!")
+            .catch((error) => {
+                toast.error("Error", error)
             })
             .finally(() => {
                 setIsLoading(false)

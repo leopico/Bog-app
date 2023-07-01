@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import bcrypt from 'bcrypt';
 import db from "@/app/libs/prismadb";
+import { randomUUID } from "crypto";
+import { sendNotificationEmail } from "@/app/hooks/useRegistrationNodeMailer";
 
 export async function POST(request: Request) {
     try {
@@ -25,10 +27,31 @@ export async function POST(request: Request) {
             }
         });
 
+        const token = await db.activeToken.create({
+            data: {
+                token: `${randomUUID()}${randomUUID()}`.replace(/-/g, ''),
+                user: {
+                    connect: {
+                        id: user.id
+                    }
+                }
+            }
+        });
+
+        const recipientEmail = user.email; //it can be possible null
+        const recipientName = user.name; //it can be possible null
+        const recipientToken = token.token
+
+        if (recipientEmail && recipientName !== null) {
+            await sendNotificationEmail(recipientName , recipientToken , recipientEmail)
+        } else {
+            return new NextResponse('You must have correct Information', { status: 401 });
+        }
+
         return NextResponse.json(user);
-        
+
     } catch (error: any) {
         console.log(error, "REGISTRATION_ERROR");
-        return new NextResponse('Internal Error', {status: 500})
+        return new NextResponse('Internal Error', { status: 500 })
     }
 } 
