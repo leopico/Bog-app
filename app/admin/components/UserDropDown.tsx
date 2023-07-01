@@ -1,6 +1,7 @@
 "use client"
 
 import SmallLoader from '@/app/components/SmallLoader';
+import { User } from '@prisma/client';
 import axios from 'axios';
 import clsx from 'clsx';
 import { useRouter } from 'next/navigation';
@@ -8,10 +9,10 @@ import { useCallback, useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 
 interface UserDropDownProps {
-    data: any
+    users: { email: string | null, role: string }[]
 }
 
-const UserDropDown: React.FC<UserDropDownProps> = ({ data }) => {
+const UserDropDown: React.FC<UserDropDownProps> = ({ users }) => {
 
     const router = useRouter();
     const [selectOption, setSelectOption] = useState("");
@@ -44,6 +45,10 @@ const UserDropDown: React.FC<UserDropDownProps> = ({ data }) => {
         }
     }, [selectOption, router]);
 
+    if (!Array.isArray(users)) {
+        return null
+    }
+
     return (
         <>
             <div className='h-10 flex justify-end items-center p-4 mt-2'>
@@ -53,7 +58,7 @@ const UserDropDown: React.FC<UserDropDownProps> = ({ data }) => {
                     )
                 }
             </div>
-            {data.map((user: any) => (
+            {users.map((user: any) => (
                 <div key={user.email}>
                     <div className="flex px-4 sm:px-6 py-2 sm:py-4 justify-between items-center">
                         <h1 className="text-[12px] sm:text-[16px] font-semibold sm:font-bold">{user.email}</h1>

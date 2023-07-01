@@ -8,7 +8,9 @@ const DashboardPage = async () => {
     const currentUser = await getCurrentUser();
 
     return (
-        <HeadingPosts title="My Blog Posts (update/delete)" posts={posts} currentUser={currentUser} />
+        <div className="h-screen">
+            <HeadingPosts title="My Blog Posts (update/delete)" posts={posts} currentUser={currentUser} />
+        </div>
     )
 }
 

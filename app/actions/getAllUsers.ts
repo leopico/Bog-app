@@ -26,7 +26,7 @@ const getAllUsers = async () => {
         });
 
         if (!users) {
-            return null
+            return []
         }
 
         return users;

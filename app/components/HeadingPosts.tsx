@@ -27,7 +27,7 @@ const HeadingPosts: React.FC<HeadingPostsProps> = ({ title, posts, currentUser }
 
 
     return (
-        <section id="posts" className="container mx-auto p-4 pt-12 pb-1">
+        <section id="posts" className="container mx-auto p-4 pt-12 pb-1 ">
             <h1 className="font-extrabold text-sm sm:text-xl lg:text-2xl text-center">{title}</h1>
             <div className="flex flex-col h-full">
                 <div className="flex-grow overflow-y-auto">
