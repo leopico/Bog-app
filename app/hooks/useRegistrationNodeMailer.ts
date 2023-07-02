@@ -19,7 +19,7 @@ export async function sendNotificationEmail(name: string, recipientToken: string
     from: email,
     to: recipientEmail,
     subject: 'Please Activate Your Account (Expired in 24hrs)',
-    text: `Hello ${name}, please activate your account by clicking this link: ${apiEndpoint}/activate/${recipientToken}`
+    text: `Hello ${name}, please activate your account by clicking this link: ${apiEndpoint}/api/activate/${recipientToken}`
   };
 
   try {
