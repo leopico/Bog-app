@@ -1,34 +1,92 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a [LPC-Blogapp](https://leopico-blogapp.vercel.app/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+![Mind map for LPC-Blogapp](./public/images/mindmap.jpg)
 
-First, run the development server:
+You can see below the features for this app:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+- Tailwind design
+- Tailwind animations and effects
+- Full responsiveness
+- Credential authentication
+- Google authentication
+- Github authentication
+- Image upload using Cloudinary CDN
+- Client form validation and handling using react-hook-form
+- Dark mode function with next-themes
+- Email verification token with NodeMailer
+- Email notification system with NodeMailer when posting at Admin side
+- Split function and storing data for subscriber of users
+- Text editor with react-quill
+- Solved rendering of client component when pre-build static generation with dynamic of next-dynamic
+- Pagination algorithm for Heading posts
+- utility for constructing className strings conditionally with clsx
+- Server error handling using react-toast
+- db seeding for initiate of admin account with ts-node
+- create custom hook with zustand
+- With Git version control that separate branches with separate section
+- Page loading state
+- Page empty state
+- Posting / CRD system in Admin role
+- User / Admin role authorization with next-auth
+- Save / Unsave from users side
+- Advanced search algorithm by posts title
+  - For example we will filter out posts title that have a post and through to dynamic post route
+- How to write POST and DELETE routes in route handlers (app/api)
+- How to fetch data in server react components by directly accessing the database (WITHOUT API! like Magic!)
+- How to handle files like error.tsx and loading.tsx which are new Next 13 templating files to unify loading and error handling
+- How to handle relations between Server and Child components!
+
+### Prerequisites
+
+**Node version 14.x**
+
+### Cloning the repository
+
+```shell
+git clone https://github.com/leopico/Bog-app.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Install packages
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```shell
+npm i
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Setup .env file
 
-## Learn More
+```js
+DATABASE_URL=
+NEXTAUTH_SECRET=
+GITHUB_ID=
+GITHUB_SECRET=
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=
+EMAIL=
+EMAIL_PASS=
+ACC_NAME=
+ACC_EMAIL=
+ACC_PASSWORD=
+VERCEL_URL=
+```
 
-To learn more about Next.js, take a look at the following resources:
+### Setup Prisma
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```shell
+npx prisma db push
+npx prisma db seed
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Start the app
 
-## Deploy on Vercel
+```shell
+npm run dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Available commands
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Running commands with npm `npm run [command]`
+
+| command | description                              |
+| :------ | :--------------------------------------- |
+| `dev`   | Starts a development instance of the app |
