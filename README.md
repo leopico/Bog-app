@@ -83,6 +83,13 @@ npx prisma db seed
 npm run dev
 ```
 
+### Demo account for admin
+
+```shell
+username - paypalmoney967@gmail.com
+password - admin123
+```
+
 ## Available commands
 
 Running commands with npm `npm run [command]`
