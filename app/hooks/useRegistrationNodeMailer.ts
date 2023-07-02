@@ -3,7 +3,7 @@ import nodemailer, { Transporter } from 'nodemailer';
 
 const email = process.env.EMAIL;
 const pass = process.env.EMAIL_PASS;
-const apiEndpoint = process.env.API_ENDPOINT;
+const apiEndpoint = process.env.VERCEL_URL;
 
 // Create a transporter instance
 const transporter: Transporter = nodemailer.createTransport({
