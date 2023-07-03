@@ -2,6 +2,14 @@ import getAllUsers from '@/app/actions/getAllUsers';
 import UserDropDown from '../components/UserDropDown';
 import EmptyState from '@/app/components/EmptyState';
 
+export const metadata = {
+    title: {
+        default: "Users",
+        template: "%s | Blog" //this is child title that dynamic route
+    },
+    description: 'Explore technical insights and cutting-edge topics in our Next.js blog. Stay updated with the latest advancements. Learn, code, and optimize your web development skills. #NextJS',
+}
+
 const page = async () => {
     const users = await getAllUsers();
 
