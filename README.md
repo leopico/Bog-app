@@ -2,7 +2,11 @@ This is a [LPC-Blogapp](https://leopico-blogapp.vercel.app/) project bootstrappe
 
 ![Mind map for LPC-Blogapp](./public/images/mindmap.jpg)
 
-You can see below the features for this app:
+### SEO report before & after
+
+[Google Drive Link](https://drive.google.com/drive/folders/15rnAeRo8oUuYG33s0R7fdxXRN5ZZn-9C)
+
+### You can see below the features for this app:
 
 - Tailwind design
 - Tailwind animations and effects
@@ -83,13 +87,6 @@ npx prisma db seed
 npm run dev
 ```
 
-### Demo account for admin
-
-```shell
-username - paypalmoney967@gmail.com
-password - admin123
-```
-
 ## Available commands
 
 Running commands with npm `npm run [command]`
@@ -97,3 +94,10 @@ Running commands with npm `npm run [command]`
 | command | description                              |
 | :------ | :--------------------------------------- |
 | `dev`   | Starts a development instance of the app |
+
+### Demo account for admin
+
+```shell
+username - paypalmoney967@gmail.com
+password - admin123
+```
