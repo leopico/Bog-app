@@ -46,14 +46,14 @@ const ClientPost: React.FC<ClientPostsProps> = ({ post }) => {
                     <div className="flex justify-between text-end items-center min-w-[25px] gap-1">
                         <span className="mt-[10px]">
                             <div className="github">
-                                <Link passHref href="https://www.github.com/leopico" target="_blank">
+                                <Link passHref href="https://www.github.com/leopico" target="_blank" rel="noopener noreferrer">
                                     <FaGithubAlt size={30} color='black' />
                                 </Link>
                             </div>
                         </span>
                         <span className="mt-[10px]">
                             <div className="website">
-                                <Link passHref href="https://portfolio-leopico.vercel.app" target="_blank">
+                                <Link passHref href="https://portfolio-leopico.vercel.app" target="_blank" rel="noopener noreferrer">
                                     <GiWorld size={25} color="gray" />
                                 </Link>
                             </div>

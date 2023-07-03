@@ -4,6 +4,7 @@ import useRegisterModal from '@/app/hooks/useRegisterModal';
 import Link from 'next/link';
 import { FaGithubAlt } from 'react-icons/fa';
 import { GiWorld } from 'react-icons/gi'
+import EmailLink from './EmailLink';
 
 const ContextFooter = () => {
     const registerModal = useRegisterModal();
@@ -38,20 +39,18 @@ const ContextFooter = () => {
                             </a>
                         </li>
                         <li>
-                            <a href="mailto:leopico.peceng@gmail.com" className="hover:under hover:text-black hover:font-bold">
-                                leopico.peceng@gmail.com
-                            </a>
+                            <EmailLink />
                         </li>
                     </ul>
                     <div className="flex items-center justify-center space-x-3">
                         <div className="github">
-                            <Link passHref href="https://www.github.com/leopico" target="_blank">
+                            <Link passHref href="https://www.github.com/leopico" target="_blank" rel="noopener noreferrer">
                                 <FaGithubAlt size={30} color='black' />
                             </Link>
 
                         </div>
                         <div className='link'>
-                            <Link passHref href="https://portfolio-leopico.vercel.app" target="_blank">
+                            <Link passHref href="https://portfolio-leopico.vercel.app" target="_blank" rel="noopener noreferrer">
                                 <GiWorld size={25} color="gray" />
                             </Link>
                         </div>

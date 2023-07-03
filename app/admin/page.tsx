@@ -3,6 +3,14 @@ import getCurrentUser from "../actions/getCurrentUser";
 import HeadingPosts from "../components/HeadingPosts";
 
 
+export const metadata = {
+    title: {
+        default: "Dashboard",
+        template: "%s | Blog" //this is child title that dynamic route
+    },
+    description: 'Explore technical insights and cutting-edge topics in our Next.js blog. Stay updated with the latest advancements. Learn, code, and optimize your web development skills. #NextJS',
+}
+
 const DashboardPage = async () => {
     const posts = await getPosts();
     const currentUser = await getCurrentUser();
