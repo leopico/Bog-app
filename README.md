@@ -4,7 +4,7 @@ This is a [LPC-Blogapp](https://leopico-blogapp.vercel.app/) project bootstrappe
 
 ### SEO report before & after
 
-[Google Drive Link](https://drive.google.com/drive/folders/1JjqmuF0ITBtfrs6nWwj9u4-SIVWsDZ6J?usp=sharing)
+[Google Drive Link](https://drive.google.com/drive/folders/1IupFZAWx7e25E5LKowoSvXycSBTukme8?usp=sharing)
 
 ### You can see below the features for this app:
 
