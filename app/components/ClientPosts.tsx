@@ -70,7 +70,7 @@ const ClientPosts: React.FC<ClientPostsProps> = ({ posts, currentUser }) => {
                     )
                 }
             </div>
-            <div className="grid lg:grid-cols-2 gap-6 py-6">
+            <div className="grid md:grid-cols-2 gap-6 py-6">
                 {
                     posts.map((post) => {
                         const trancatedTitle = `${post.title.slice(0, 20)}...`;
@@ -79,13 +79,15 @@ const ClientPosts: React.FC<ClientPostsProps> = ({ posts, currentUser }) => {
                             <div key={post.id} onClick={() => router.push(`/posts/${post.id}`)}
                                 className="bg-gray-200 flex flex-col relative sm:flex-row
                              mx-10 sm:mx-0 p-1 hover:cursor-pointer hover:shadow-md dark:bg-gray-600">
-                                <GlobalImage
-                                    className="p-2 object-cover mx-auto"
-                                    alt="post-img"
-                                    src={post.image}
-                                    width={150}
-                                    height={100}
-                                />
+                                <div className='relative h-36 w-full md:w-48 '>
+                                    <GlobalImage
+                                        className="p-2 object-cover mx-auto"
+                                        alt="post-img"
+                                        src={post.image}
+                                        fullfill={true}
+                                    />
+                                </div>
+
                                 <div className="flex flex-col w-full overflow-hidden">
                                     <div className="flex justify-around items-center">
                                         <h1 className="text-center font-extrabold text-[12px] sm:text-lg lg:text-xl">
